@@ -12,6 +12,12 @@ let sliders = [];
 // to create your own api key
 const KEY = `35343248-4f7358d208b6ef1d8700f1637`;
 
+const showSpinner = ()=>{
+    let spinnerdiv = document.getElementById("spinner-div");
+    spinnerdiv.classList.toggle("d-none");
+    console.log(spinnerdiv.classList);
+}
+
 // show images 
 const showImages = (images) => {
   imagesArea.style.display = 'block';
@@ -26,11 +32,12 @@ const showImages = (images) => {
     div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
     gallery.appendChild(div)
   })
-
+  showSpinner();
 }
 // this function for fetch api url
 const getImages = (query) => {
-  fetch(`https://pixabay.com/api/?key=${KEY}&q=${query}&image_type=photo&pretty=true`)
+    showSpinner()
+    fetch(`https://pixabay.com/api/?key=${KEY}&q=${query}&image_type=photo&pretty=true`)
     .then(res => res.json())
     .then(data => showImages(data.hits)) // fix problem 1: { hitS } 
     .catch(err => console.log(err))
