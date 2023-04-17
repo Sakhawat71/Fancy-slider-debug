@@ -4,11 +4,11 @@ i. API fix
 ii. show slider
 iii. slider time (Negative positive)
 iv. add: search option with enter key
-v. select unselect with toggle
+v. select unselect images with toggle
 
 for Bonus : 
-i. I added the spinner
-ii. 
+i. spinner 
+ii. navber
 */
 
 
