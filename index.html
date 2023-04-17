@@ -15,12 +15,31 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="bg-light">
+  <!-- nav -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mr-5 ml-5 mb-5 mt-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- class="collapse navbar-collapse" -->
+      <div id="navbarNavAltMarkup"> 
+        <div class="navbar-nav">
+          <a class="nav-link mr-4 active" aria-current="page" href="#">Home</a>
+          <a class="nav-link mr-4 active" href="#">Features</a>
+          <a class="nav-link mr-4 active" href="#">Pricing</a>
+          <a class="nav-link mr-4 active" href="#">About us</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- main part start  -->
   <div class="container">
-    <h4 class="mt-2 text-center">Search Image for create slider</h4>
     <div class="form-inline mt-3 d-flex justify-content-center">
       <div class="input-group col-md-6 mb-2">
-        <input type="text" class="form-control" id="search" placeholder="nature">
+        <input type="text" class="form-control" id="search" placeholder="Search Image for create slider">
       </div>
       <button type="button" id="search-btn" class="btn btn-primary mb-2">Search</button>
     </div>
@@ -29,11 +48,12 @@
       <div class="justify-content-around align-items-center mt-3 gallery-header mb-4">
         <h3 class="head-title text-center">Select image for create slider</h3>
         <div class="input-group col-md-3 mb-2 mb-md-0">
-          <input class="form-control" id="duration" type="number" min="1000" oninput="validity.valid||(value='');" placeholder="slider change duration"> 
+          <input class="form-control" id="duration" placeholder="slider change duration(in millisecond)" min="1000"> 
         </div>
         <button id="create-slider" class="btn btn-primary px-5">Create slider</button>
       </div>
-
+      
+<!-------------------- add Spinner  ----------------------------------->
       <div class="d-flex justify-content-center">
         <div id="spinner-div" class="d-none spinner-border" role="status">
             <span class="visually-hidden"></span>

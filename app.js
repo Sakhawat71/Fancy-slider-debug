@@ -1,28 +1,39 @@
+/**
+Problems:
+i. API fix
+ii. show slider
+iii. slider time (Negative positive)
+iv. add: search option with enter key
+v. select unselect with toggle
+
+for Bonus : 
+i. I added the spinner
+ii. 
+*/
+
+
 const imagesArea = document.querySelector('.images');
 const gallery = document.querySelector('.gallery');
 const galleryHeader = document.querySelector('.gallery-header');
 const searchBtn = document.getElementById('search-btn');
 const sliderBtn = document.getElementById('create-slider');
 const sliderContainer = document.getElementById('sliders');
-// selected image 
+
 let sliders = [];
 
-// If this key doesn't work
-// Find the name in the url and go to their website
-// to create your own api key
 const KEY = `35343248-4f7358d208b6ef1d8700f1637`;
 
+
+//  add spinner
 const showSpinner = ()=>{
     let spinnerdiv = document.getElementById("spinner-div");
     spinnerdiv.classList.toggle("d-none");
-    console.log(spinnerdiv.classList);
 }
 
-// show images 
+
 const showImages = (images) => {
   imagesArea.style.display = 'block';
   gallery.innerHTML = '';
-  // show gallery title
 
   galleryHeader.style.display = 'flex';
 
@@ -34,7 +45,7 @@ const showImages = (images) => {
   })
   showSpinner();
 }
-// this function for fetch api url
+
 const getImages = (query) => {
     showSpinner()
     fetch(`https://pixabay.com/api/?key=${KEY}&q=${query}&image_type=photo&pretty=true`)
@@ -61,15 +72,15 @@ const selectItem = (event, img) => {
       sliders.splice(item, 1);
     }
 }
-
 var timer
+
 const createSlider = () => {
-  // check slider image length
+
   if (sliders.length < 2) {
     alert('Select at least 2 image.')
     return;
   }
-  // crate slider previous next area
+
   sliderContainer.innerHTML = '';
   const prevNext = document.createElement('div');
   prevNext.className = "prev-next d-flex w-100 justify-content-between align-items-center";
@@ -80,11 +91,8 @@ const createSlider = () => {
 
   sliderContainer.appendChild(prevNext)
   document.querySelector('.main').style.display = 'block';
-  // hide image aria
+ 
   imagesArea.style.display = 'none';
-
-	const durationRow = document.getElementById('duration').value || 1000;  // {doration} wornd id name problem 2 
-	const duration = parseFloat(durationRow);
 
   sliders.forEach(slide => {
     let item = document.createElement('div')
@@ -94,6 +102,11 @@ const createSlider = () => {
     alt="">`;
     sliderContainer.appendChild(item)
   })
+
+const durationRow = document.getElementById('duration').value || 1000;
+const durationNum = parseInt(durationRow);
+const duration = Math.abs(durationNum);
+
   changeSlide(0)
   timer = setInterval(function () {
     slideIndex++;
@@ -101,12 +114,10 @@ const createSlider = () => {
   }, duration);
 }
 
-// change slider index 
 const changeItem = index => {
   changeSlide(slideIndex += index);
 }
 
-// change slide item
 const changeSlide = (index) => {
 
   const items = document.querySelectorAll('.slider-item');
